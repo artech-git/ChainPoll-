@@ -1,8 +1,9 @@
 
 
+pub type ChainPollResult<T> = std::result::Result<T, Error>; 
 
-pub type InsertError<T> = std::result::Result<T, Error>; 
 
+#[derive(Debug)]
 pub struct Error { 
     convert: ErrVariants
 }
@@ -12,8 +13,7 @@ where T: Into<ErrVariants>
 { 
     fn from(val: T) -> Self { 
         Self {
-            convert: val.into(), 
-
+            convert: val.into(),
         }
     }
 }
